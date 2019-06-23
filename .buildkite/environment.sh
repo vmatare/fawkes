@@ -41,3 +41,14 @@ if type -p gmake >/dev/null; then
 fi
 export MAKE
 
+BASEDIR=$(realpath $(dirname $(readlink -f ${BASH_SOURCE[0]}))/..)
+TOP_BASEDIR=
+
+if [ -e "$BASEDIR/../.gitmodules" ] ; then
+  if [ -e "$BASEDIR/../fawkes" ] ; then
+    TOP_BASEDIR=$(realpath $BASEDIR/..)
+  fi
+fi
+
+export BASEDIR
+export TOP_BASEDIR
