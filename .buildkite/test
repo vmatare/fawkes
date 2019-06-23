@@ -29,3 +29,17 @@ set -euo pipefail
 
 # Run tests
 $MAKE -j$NPROC test
+
+shopt -s nullglob
+if [ -n "${BASEDIR-}" ] ; then
+  for f in $BASEDIR/.buildkite/tests.d/* ; do
+    eval $f
+  done
+fi
+
+if [ -n "${TOP_BASEDIR-}" ] ; then
+  export TOP_BASEDIR
+  for f in $TOP_BASEDIR/.buildkite/tests.d/* ; do
+    eval $f
+  done
+fi
