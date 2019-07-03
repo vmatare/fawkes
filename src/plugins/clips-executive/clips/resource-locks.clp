@@ -44,7 +44,7 @@
         (id ?goal-id)
         (required-resources $?req))
   (plan-action (goal-id ?goal-id)
-               (required-resources $? ?res&:(not (member$ ?res $?req) $?)))
+               (required-resources $? ?res&:(not (member$ ?res $?req)) $?))
   =>
   (printout warn "Add resource to goal resources: " ?res crlf)
   (modify ?g (required-resources (create$ ?req ?res)))
