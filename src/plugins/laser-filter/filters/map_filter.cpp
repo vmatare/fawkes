@@ -161,9 +161,9 @@ LaserMapFilterDataFilter::filter()
 				int cell_x = (int)MAP_GXWX(map_, p.getX());
 				int cell_y = (int)MAP_GYWY(map_, p.getY());
 
-				// search in 8-neighborhood and itself for occupied pixels in map
-				for (int ox = -2; add && ox <= 2; ++ox) {
-					for (int oy = -2; oy <= 2; ++oy) {
+				// search in 35-neighborhood and itself for occupied pixels in map
+				for (int ox = -3; add && ox <= 3; ++ox) {
+					for (int oy = -3; oy <= 3; ++oy) {
 						int x = cell_x + ox;
 						int y = cell_y + oy;
 						if (MAP_VALID(map_, x, y)) {
